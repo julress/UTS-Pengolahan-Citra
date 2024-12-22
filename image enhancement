@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from skimage import exposure
 
 # Load a sample low contrast image
-image = imageio.imread('/content/r6WOfUQWTmdMYqI4zsbg--1--5aj1p.webp')
+image = imageio.imread('/content/gfsg.jpeg')
 
 # Apply Histogram Equalization
 image_eq = exposure.equalize_hist(image)
