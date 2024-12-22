@@ -1,0 +1,32 @@
+import imageio
+import numpy as np
+import matplotlib.pyplot as plt
+from skimage import exposure
+
+# Load a sample low contrast image
+image = imageio.imread('/content/r6WOfUQWTmdMYqI4zsbg--1--5aj1p.webp')
+
+# Apply Histogram Equalization
+image_eq = exposure.equalize_hist(image)
+
+# Apply Contrast Stretching with level 1.5
+image_contrast = np.clip(1.5 * (image - 128) + 128, 0, 255).astype(np.uint8)
+
+# Plot the original and processed images
+fig, axes = plt.subplots(1, 3, figsize=(15, 5))
+ax = axes.ravel()
+
+ax[0].imshow(image, cmap='gray')
+ax[0].set_title('Original Image')
+
+ax[1].imshow(image_eq, cmap='gray')
+ax[1].set_title('Histogram Equalization')
+
+ax[2].imshow(image_contrast, cmap='gray')
+ax[2].set_title('Contrast Level 1.5')
+
+for a in ax:
+    a.axis('off')
+
+plt.tight_layout()
+plt.show()
